@@ -1,0 +1,36 @@
+from tkinter import * 
+from tkinter.messagebox import showinfo
+
+def reply(ent):
+    hero = ent.get()
+    try:
+        if eval(hero):
+            raise Exception 
+        if hero == "Batman":
+            showinfo(title='Reply', message='The Dark Knight is so cool!')
+        elif type(hero) == str:
+            showinfo(title='Reply', message=f'{hero} is really cool!')
+    except:
+        showinfo(title='Invalid Response', message='Please say a Valid name.')
+    ent.delete(0,END)
+
+def makingWindows():
+    #making window
+    window = Tk()
+    window.title('Testing')
+
+    #making a label
+    Label(window, text="Who is your favorite superhero?").pack()
+    
+    #making an entry
+    ent = Entry(window)
+    ent.pack()
+    
+    #making a button
+    btn = Button(window, text="Submit", command=lambda: reply(ent))
+    btn.pack()
+    
+    window.mainloop()
+    
+#Running the GUI
+makingWindows()
